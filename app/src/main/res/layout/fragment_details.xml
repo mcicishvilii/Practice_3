@@ -129,7 +129,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
-            android:text="popularity"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:layout_marginBottom="20dp"

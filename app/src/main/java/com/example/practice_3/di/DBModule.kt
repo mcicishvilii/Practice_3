@@ -21,7 +21,7 @@ object DBModule {
     fun provideDb(@ApplicationContext context: Context): DataBase {
         return Room.databaseBuilder(
             context,
-            DataBase::class.java,"movies",
+            DataBase::class.java, "movies",
         ).fallbackToDestructiveMigration()
             .build()
     }

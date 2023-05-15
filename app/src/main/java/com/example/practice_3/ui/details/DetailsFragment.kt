@@ -16,11 +16,10 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(FragmentDetailsBind
         val movie = args.movieInfo
         binding.apply {
             tvMovieName.text = movie.title
-            tvAveragePopularityDetails.text = movie.voteAverage.toString()
             tvAboutMovie.text = movie.overview
-            tvRateCountDetails.text = movie.voteCount.toString()
-            tvAverageRatingDetails.text = movie.voteAverage.toString()
-            tvReleaseDateDetails.text = movie.releaseDate
+            tvRateCountDetails.text = "Total votes: ${movie.voteCount.toString()}"
+            tvAverageRatingDetails.text = "Votes: ${movie.voteAverage.toString()}"
+            tvReleaseDateDetails.text = "Release date: ${movie.releaseDate}"
 
             Glide.with(this.ivLargePoster)
                 .load("https://image.tmdb.org/t/p/w500${movie?.backdropPath}")
@@ -29,10 +28,7 @@ class DetailsFragment : BaseFragment<FragmentDetailsBinding>(FragmentDetailsBind
             Glide.with(this.ivSmallPoster)
                 .load("https://image.tmdb.org/t/p/w500${movie?.posterPath}")
                 .into(ivSmallPoster)
-
-
         }
-
     }
 
     override fun listeners() {

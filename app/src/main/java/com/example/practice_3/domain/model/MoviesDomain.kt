@@ -13,13 +13,22 @@ data class MoviesDomain(
     val posterPath: String?,
     val releaseDate: String?,
     val title: String?,
-    val overview:String?,
+    val overview: String?,
     val voteAverage: Double?,
-    val voteCount: Int?
-):Parcelable
+    val voteCount: Int?,
+) : Parcelable
 
 fun MoviesDomain.toRoom(): MoviesEntity {
     return MoviesEntity(
-        adult,id, backdropPath, originalTitle, posterPath, releaseDate, title, overview,voteAverage, voteCount
+        adult,
+        id,
+        backdropPath,
+        originalTitle,
+        posterPath,
+        releaseDate,
+        title,
+        overview,
+        voteAverage,
+        voteCount
     )
 }

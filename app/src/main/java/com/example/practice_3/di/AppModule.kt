@@ -18,6 +18,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
     val gson = GsonBuilder().setLenient().create()
+
     @Singleton
     @Provides
     fun provideMovies(): MoviesService =
@@ -29,7 +30,7 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun providesContext(@ApplicationContext context: Context): Context{
+    fun providesContext(@ApplicationContext context: Context): Context {
         return context
     }
 }

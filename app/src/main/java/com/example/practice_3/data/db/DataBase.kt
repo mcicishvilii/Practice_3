@@ -5,6 +5,6 @@ import androidx.room.RoomDatabase
 import com.example.practice_3.data.model.room.MoviesEntity
 
 @Database(entities = [MoviesEntity::class], version = 7)
-abstract class DataBase:RoomDatabase() {
+abstract class DataBase : RoomDatabase() {
     abstract val moviesDao: MoviesDao
 }

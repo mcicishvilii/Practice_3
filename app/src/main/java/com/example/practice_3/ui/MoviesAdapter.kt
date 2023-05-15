@@ -17,7 +17,7 @@ class MoviesAdapter :
     private lateinit var itemClickListener: (MoviesDomain, Int) -> Unit
 
     override fun onCreateViewHolder(
-        parent: ViewGroup, viewType: Int
+        parent: ViewGroup, viewType: Int,
     ): MoviesViewHolder {
         val binding =
             SingleMovieLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -34,15 +34,15 @@ class MoviesAdapter :
         private var model: MoviesDomain? = null
 
         fun bindData() {
-            model = getItem(absoluteAdapterPosition)
+            model = getItem(adapterPosition)
             binding.apply {
                 tvMovieName.text = model?.originalTitle.toString()
                 tvAverageRating.text = "Average votes: ${model?.voteAverage.toString()}"
                 tvRating.text = "Total votes: ${model?.voteCount.toString()}"
                 tvReleaseDate.text = "Release date: ${model?.releaseDate.toString()}"
-                if(model?.adult!!){
+                if (model?.adult!!) {
                     tvGenre.text = "Adult +18"
-                }else{
+                } else {
                     tvGenre.text = "Not Adult"
                 }
 
@@ -51,7 +51,7 @@ class MoviesAdapter :
                     .into(ivImagePoster)
             }
             binding.ivImagePoster.setOnClickListener {
-                itemClickListener.invoke(model!!, absoluteAdapterPosition)
+                itemClickListener.invoke(model!!, adapterPosition)
             }
         }
     }
@@ -65,14 +65,14 @@ class MoviesDiffCallBack :
     DiffUtil.ItemCallback<MoviesDomain>() {
     override fun areItemsTheSame(
         oldItem: MoviesDomain,
-        newItem: MoviesDomain
+        newItem: MoviesDomain,
     ): Boolean {
         return oldItem.id == newItem.id
     }
 
     override fun areContentsTheSame(
         oldItem: MoviesDomain,
-        newItem: MoviesDomain
+        newItem: MoviesDomain,
     ): Boolean {
         return oldItem == newItem
     }

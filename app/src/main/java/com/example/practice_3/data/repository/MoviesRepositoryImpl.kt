@@ -16,7 +16,7 @@ const val TAG = "MCICISHVILII"
 class MoviesRepositoryImpl @Inject constructor(
     private val service: MoviesService,
     private val dao: MoviesDao,
-    private val context: Context
+    private val context: Context,
 ) : MoviesRepository {
     override suspend fun refreshMovies(): List<MoviesDomain> {
         if (isInternetConnected(context)) {
@@ -34,8 +34,10 @@ class MoviesRepositoryImpl @Inject constructor(
     override suspend fun removeAll() {
         dao.deleteAll()
     }
+
     private fun isInternetConnected(context: Context): Boolean {
-        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val networkInfo = connectivityManager.activeNetworkInfo
         return networkInfo != null && networkInfo.isConnected
     }

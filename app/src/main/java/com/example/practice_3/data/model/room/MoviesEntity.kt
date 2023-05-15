@@ -9,20 +9,29 @@ import com.example.practice_3.domain.model.MoviesDomain
 data class MoviesEntity(
     val adult: Boolean?,
     @PrimaryKey(autoGenerate = false)
-    val id:Int?,
+    val id: Int?,
     val backdropPath: String?,
     @ColumnInfo(name = "movie_title")
     val originalTitle: String?,
     val posterPath: String?,
     val releaseDate: String?,
     val title: String?,
-    val overview:String?,
+    val overview: String?,
     val voteAverage: Double?,
-    val voteCount: Int?
+    val voteCount: Int?,
 )
 
 fun MoviesEntity.toDomain(): MoviesDomain {
     return MoviesDomain(
-       adult,id, backdropPath,originalTitle, posterPath, releaseDate, title, overview, voteAverage, voteCount
+        adult,
+        id,
+        backdropPath,
+        originalTitle,
+        posterPath,
+        releaseDate,
+        title,
+        overview,
+        voteAverage,
+        voteCount
     )
 }

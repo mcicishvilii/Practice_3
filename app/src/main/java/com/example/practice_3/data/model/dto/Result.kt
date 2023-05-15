@@ -32,11 +32,20 @@ data class Result(
     @SerializedName("vote_average")
     val voteAverage: Double?,
     @SerializedName("vote_count")
-    val voteCount: Int?
+    val voteCount: Int?,
 )
 
 fun Result.toDomain(): MoviesDomain {
     return MoviesDomain(
-        adult,id,backdropPath,originalTitle,posterPath,releaseDate,title,overview,voteAverage,voteCount
+        adult,
+        id,
+        backdropPath,
+        originalTitle,
+        posterPath,
+        releaseDate,
+        title,
+        overview,
+        voteAverage,
+        voteCount
     )
 }
